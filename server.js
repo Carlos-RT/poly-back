@@ -2,10 +2,12 @@ require('dotenv').config(); // ⬅️ Esto debe ir antes de usar process.env
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const dns = require("dns")
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+dns.setServers(['1.1.1.1', '8.8.8.8'])
 
 // Conectar con MongoDB usando la variable del .env
 mongoose.connect(process.env.MONGODB_URI, {
